@@ -12,16 +12,20 @@ MongoClient.connect(url, function(err, db) {
 
 const collection = db.collection('usuarios')
 
-collection.find({}).toArray(function(err, person) {
-    console.log(JSON.stringify(person, null, 2))
-    });
-});
-
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 app.get('/', function(req, res) {
-    res.render('index')
+    collection.find({}).toArray(function(err, result) {
+        let contas = {
+            users: Object
+        }
+        contas.users = JSON.parse(JSON.stringify(result, null, 2))
+
+        res.render('index', contas);
+        });
 });
+});
+
 
 app.listen(3000, () => console.log('App listening on port 3000!'))

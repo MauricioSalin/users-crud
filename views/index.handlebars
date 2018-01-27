@@ -3,6 +3,7 @@
     <tr>
       <th>Id</th>
       <th>Nome</th>
+      <th>Sobrenome</th>
       <th>Email</th>
       <th>CPF</th>
       <th>Telefone</th>
@@ -10,15 +11,18 @@
       <th>Status</th>
       <th><a class="button is-primary" href="/">+</a></th>
     </tr> 
-    
+
     <tr>
+    {{#each users}}
       <td>{{_id}}</td>
-      <td>{{name}}</td>
+      <td>{{nome}}</td>
+      <td>{{sobrenome}}</td>
       <td>{{email}}</td>
       <td>{{cpf}}</td>
-      <td>{{phone}}</td>
-      <td>{{date}}</td>
+      <td>{{telefone}}</td>
+      <td>{{data}}</td>
       <td>{{status}}</td>
+     {{/each}}
       <td>
         <a class="button is-info" href="/">Editar</a>
         <a class="button is-danger">Deletar</a>
