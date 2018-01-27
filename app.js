@@ -3,7 +3,7 @@ const app = express()
 const path = require('path')
 const exphbs = require('express-handlebars')
 const MongoClient = require('mongodb').MongoClient
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 const url = ''
 
@@ -35,8 +35,16 @@ app.get('/newUser', function(req, res) {
 
 app.post('/newUser', function(req, res) {
   let nome = req.body.nome
+  let sobrenome = req.body.sobrenome
   let email = req.body.email
-  console.log(nome)
+  let cpf = req.body.cpf
+  let telefone = req.body.telefone
+  let data = req.body.data
+  let status = req.body.status
+  
+  collection.insertOne({nome,sobrenome,email,cpf,telefone,data,status},function(err, result) {
+    res.redirect('/')
+    });
 })
 
 });
