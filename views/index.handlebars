@@ -13,7 +13,7 @@
     </tr> 
 
     <tr>
-    {{#each users}}
+    {{#users}}
       <td>{{_id}}</td>
       <td>{{nome}}</td>
       <td>{{sobrenome}}</td>
@@ -22,11 +22,11 @@
       <td>{{telefone}}</td>
       <td>{{data}}</td>
       <td>{{status}}</td>
-     {{/each}}
       <td>
         <a class="button is-info" href="/">Editar</a>
         <a class="button is-danger">Deletar</a>
       </td>
     </tr>
+    {{/users}}
   </table>
 </div>

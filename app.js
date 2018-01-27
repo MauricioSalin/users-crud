@@ -17,14 +17,18 @@ app.set('view engine', 'handlebars')
 
 app.get('/', function(req, res) {
     collection.find({}).toArray(function(err, result) {
-        let contas = {
+        let accounts = {
             users: Object
         }
-        contas.users = JSON.parse(JSON.stringify(result, null, 2))
+        accounts.users = JSON.parse(JSON.stringify(result, null, 2))
 
-        res.render('index', contas);
+        console.log(accounts)
+
+
+        res.render('index', accounts);
         });
 });
+
 });
 
 
