@@ -1,10 +1,28 @@
-  <section class="section">
-    <div class="container">
-      <h1 class="title">
-        Hello World
-      </h1>
-      <p class="subtitle">
-        My first website with <strong>Bulma</strong>!
-      </p>
-    </div>
-  </section>
+<div class="tabcontent" id="Author">
+  <table class="table">
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>CPF</th>
+      <th>Telefone</th>
+      <th>Data Nasc.</th>
+      <th>Status</th>
+      <th><a class="button is-primary" href="/">+</a></th>
+    </tr>
+    
+    <tr>
+      <td>{{_id}}</td>
+      <td>{{name}}</td>
+      <td>{{email}}</td>
+      <td>{{cpf}}</td>
+      <td>{{phone}}</td>
+      <td>{{date}}</td>
+      <td>{{status}}</td>
+      <td>
+        <a class="button is-info" href="/">Editar</a>
+        <a class="button is-danger">Deletar</a>
+      </td>
+    </tr>
+  </table>
+</div>
