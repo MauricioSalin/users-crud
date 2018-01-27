@@ -1,0 +1,76 @@
+
+
+<div class="hero-body">
+<div class="content">
+    <a class="button" href="/">Retornar para a página anterior</a>
+    </div>
+  <form action="/newUser" method="post">
+    <div class="field">
+      <label class="label">Nome</label>
+      <div class="control">
+        <input id="name" name="nome" class="input" maxlength="40" type="text" placeholder="Nome" value="{{nome}}" required>
+        <input id="id" name="id" class="input" type="hidden" value="{{_id}}">
+      </div>
+    </div>
+
+<div class="field">
+      <label class="label">Sobrenome</label>
+      <div class="control">
+        <input id="sobrenome" name="sobrenome" class="input" maxlength="40" type="text" placeholder="Sobrenome" value="{{sobrenome}}" >
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">E-mail</label>
+      <div class="control">
+        <input id="email" name="email" class="input" type="email" placeholder="E-mail" value="{{email}}" required>
+      </div>
+    </div>
+
+
+    <div class="field">
+      <label class="label">CPF</label>
+      <div class="control">
+        <input id="cpf" name="cpf" class="input" maxlength="11" type="number" placeholder="CPF" value="{{cpf}}">
+      </div>
+    </div>
+
+  <div class="field">
+      <label class="label">Telefone</label>
+      <div class="control">
+        <input id="telefone" name="telefone" class="input" type="number" placeholder="Telefone" value="{{telefone}}">
+      </div>
+    </div>
+
+      <div class="field">
+      <label class="label">Data de nascimento</label>
+      <div class="control">
+        <input id="data" name="data" class="input" type="date"  value="{{data}}">
+      </div>
+    </div>
+
+<div class="field">
+      <label class="label">Status do usuario</label>
+<div class="control">
+  <label class="radio">
+    <input id="true" type="radio" name="true" value="{{status}}" >
+    Ativo
+  </label>
+  <label class="radio">
+    <input id="false" type="radio" name="false" value="{{status}}" >
+    Inativo
+  </label>
+</div>
+    </div>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <input type="submit" value="Salvar" class="button is-primary is-medium is-fullwidth">
+      </form>
+    </div>
+    <div class="control">
+      <a class="button is-danger is-medium is-fullwidth" href="/">Cancelar</a>
+    </div>
+    
+  </div>
+ 
