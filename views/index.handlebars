@@ -23,8 +23,8 @@
       <td>{{data}}</td>
       <td>{{status}}</td>
       <td>
-        <a class="button is-info" href="/">Editar</a>
-        <a class="button is-danger">Deletar</a>
+        <a class="button is-info" href="/edit/{{_id}}">Editar</a>
+        <a class="button is-danger" href="/delete/{{_id}}" onclick="return confirm('Tem certeza que deseja excluir este usuario?');">Deletar</a>
       </td>
     </tr>
     {{/users}}

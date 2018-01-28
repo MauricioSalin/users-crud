@@ -4,7 +4,8 @@
 <div class="content">
     <a class="button" href="/">Retornar para a página anterior</a>
     </div>
-  <form action="/newUser" method="post">
+{{#user}}
+  <form action="{{action}}" method="post">
     <div class="field">
       <label class="label">Nome</label>
       <div class="control">
@@ -43,7 +44,7 @@
     </div>
 
       <div class="field">
-      <label class="label">Data de nascimento</label>
+      <label class="label">Data de nascimentoo</label>
       <div class="control">
         <input id="data" name="data" class="input" type="date"  value="{{data}}">
       </div>
@@ -53,16 +54,15 @@
       <label class="label">Status do usuario</label>
 <div class="control">
   <label class="radio">
-    <input id="status" type="radio" name="status" value="true" >
+    <input id="status" type="radio" name="status" value="ativo" >
     Ativo
   </label>
   <label class="radio">
-    <input id="status" type="radio" name="status" value="false" >
+    <input id="status" type="radio" name="status" value="inativo" >
     Inativo
   </label>
 </div>
     </div>
-
     <div class="field is-grouped">
       <div class="control">
         <input type="submit" value="Salvar" class="button is-primary is-medium is-fullwidth">
@@ -71,6 +71,6 @@
     <div class="control">
       <a class="button is-danger is-medium is-fullwidth" href="/">Cancelar</a>
     </div>
-    
+{{/user}} 
   </div>
  
