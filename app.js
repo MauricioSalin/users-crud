@@ -8,7 +8,7 @@ const app = express()
 
 const port = process.env.PORT || 3000
 
-const MONGO_URL; //URL para conexao no banco
+let MONGO_URL; //URL para conexao no banco
 
 MongoClient.connect(MONGO_URL, function(err, db) {
     db = db.db('usercrud')
