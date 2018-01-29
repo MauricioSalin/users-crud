@@ -6,7 +6,7 @@ const MongoClient = require('mongodb').MongoClient
 const bodyParser = require('body-parser')
 const ObjectId = require("mongodb").ObjectId
 
-const MONGO_URL = 'mongodb://admin:admin123@ds013456.mlab.com:13456/usercrud' //URL para conexao no banco
+const MONGO_URL; //URL para conexao no banco
 
 MongoClient.connect(MONGO_URL, function(err, db) {
     db = db.db('usercrud')
