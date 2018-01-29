@@ -1,15 +1,13 @@
-
-
 <div class="hero-body">
 <div class="content">
-    <a class="button" href="/">Retornar para a página anterior</a>
+    <a class="button" href="/">Pagina anterior</a>
     </div>
 {{#user}}
   <form action="{{action}}" method="post">
     <div class="field">
       <label class="label">Nome</label>
       <div class="control">
-        <input id="name" name="nome" class="input" maxlength="40" type="text" placeholder="Nome" value="{{nome}}" required>
+        <input id="name" name="name" class="input" maxlength="40" type="text" placeholder="Nome" value="{{name}}" required>
         <input id="id" name="id" class="input" type="hidden" value="{{_id}}">
       </div>
     </div>
@@ -17,7 +15,7 @@
 <div class="field">
       <label class="label">Sobrenome</label>
       <div class="control">
-        <input id="sobrenome" name="sobrenome" class="input" maxlength="40" type="text" placeholder="Sobrenome" value="{{sobrenome}}" >
+        <input id="lastname" name="lastname" class="input" maxlength="40" type="text" placeholder="Sobrenome" value="{{lastname}}" required>
       </div>
     </div>
 
@@ -32,21 +30,21 @@
     <div class="field">
       <label class="label">CPF</label>
       <div class="control">
-        <input id="cpf" name="cpf" class="input" maxlength="11" type="number" placeholder="CPF" value="{{cpf}}">
+        <input id="cpf" name="cpf" class="input" maxnumber="11" type="number" placeholder="CPF" value="{{cpf}}" required>
       </div>
     </div>
 
   <div class="field">
       <label class="label">Telefone</label>
       <div class="control">
-        <input id="telefone" name="telefone" class="input" type="number" placeholder="Telefone" value="{{telefone}}">
+        <input id="phone" name="phone" class="input" type="number" placeholder="Telefone" value="{{phone}}" required>
       </div>
     </div>
 
       <div class="field">
       <label class="label">Data de nascimentoo</label>
       <div class="control">
-        <input id="data" name="data" class="input" type="date"  value="{{data}}">
+        <input id="date" name="date" class="input" type="date"  value="{{date}}" required>
       </div>
     </div>
 
@@ -54,11 +52,11 @@
       <label class="label">Status do usuario</label>
 <div class="control">
   <label class="radio">
-    <input id="status" type="radio" name="status" value="ativo" >
+    <input id="status" type="radio" name="status" value="Ativo" >
     Ativo
   </label>
   <label class="radio">
-    <input id="status" type="radio" name="status" value="inativo" >
+    <input id="status" type="radio" name="status" value="Inativo" >
     Inativo
   </label>
 </div>
@@ -71,6 +69,6 @@
     <div class="control">
       <a class="button is-danger is-medium is-fullwidth" href="/">Cancelar</a>
     </div>
+    <p>{{return}}</p>
 {{/user}} 
   </div>
- 

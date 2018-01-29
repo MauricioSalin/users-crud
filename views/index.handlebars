@@ -7,7 +7,7 @@
       <th>Email</th>
       <th>CPF</th>
       <th>Telefone</th>
-      <th>Data Nasc.</th>
+      <th>Data Nascimento</th>
       <th>Status</th>
       <th><a class="button is-primary" href="/newUser">+</a></th>
     </tr> 
@@ -15,12 +15,12 @@
     <tr>
     {{#users}}
       <td>{{_id}}</td>
-      <td>{{nome}}</td>
-      <td>{{sobrenome}}</td>
+      <td>{{name}}</td>
+      <td>{{lastname}}</td>
       <td>{{email}}</td>
       <td>{{cpf}}</td>
-      <td>{{telefone}}</td>
-      <td>{{data}}</td>
+      <td>{{phone}}</td>
+      <td>{{date}}</td>
       <td>{{status}}</td>
       <td>
         <a class="button is-info" href="/edit/{{_id}}">Editar</a>

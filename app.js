@@ -3,19 +3,22 @@ const app = express()
 const path = require('path')
 const exphbs = require('express-handlebars')
 const MongoClient = require('mongodb').MongoClient
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser')
+const ObjectId = require("mongodb").ObjectId
 
-const ObjectId = require("mongodb").ObjectId;
-const url = ''
+const MONGO_URL = 'mongodb://admin:admin123@ds013456.mlab.com:13456/usercrud' //URL para conexao no banco
 
-MongoClient.connect(url, function(err, db) {
+MongoClient.connect(MONGO_URL, function(err, db) {
     db = db.db('usercrud')
     console.log("Conectado ao banco!")
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));    
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));
 
-const collection = db.collection('usuarios')
+const collection = db.collection('Users')
+
+collection.createIndex( { "email": 1 }, { unique: true },function(req, result) { 
+})   
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -24,7 +27,7 @@ app.get('/', function(req, res) {
     collection.find({}).toArray(function(err, result) {
         let accounts = new Object
         accounts.users = JSON.parse(JSON.stringify(result, null, 2))
-        res.render('index', accounts);
+        res.render('index', accounts)
         });
 });
 
@@ -36,17 +39,20 @@ app.get('/newUser', function(req, res) {
 });
 
 app.post('/newUser', function(req, res) {
-  let nome = req.body.nome
-  let sobrenome = req.body.sobrenome
+  let name = req.body.name
+  let lastname = req.body.lastname
   let email = req.body.email
   let cpf = req.body.cpf
-  let telefone = req.body.telefone
-  let data = req.body.data
+  let phone = req.body.phone
+  let date = req.body.date
   let status = req.body.status
-  
-  collection.insertOne({nome,sobrenome,email,cpf,telefone,data,status},function(err, result) {
-    res.redirect('/')
-    });
+ 
+   collection.insertOne({name, lastname, email, cpf, phone, date, status}, function(err, result) {   
+    if (result === null) {   
+        res.render('newUser', {user:{name,lastname,cpf,phone,date,status,return: "E-mail ja cadastrado!"}} )
+    } else {
+        res.redirect('/')}
+     })
 })
 
 app.get('/edit/:id', function(req, res) {
@@ -54,30 +60,31 @@ app.get('/edit/:id', function(req, res) {
         let account = new Object
         account.user = JSON.parse(JSON.stringify(result, null, 2))
         account.action = "/edit/:id"
-        res.render('newUser', account);
+        res.render('newUser', account)
         });    
 });
 
 app.post('/edit/:id', function(req, res) {  
     let id = new ObjectId(req.params.id)
-    let nome = req.body.nome
-    let sobrenome = req.body.sobrenome
+    let name = req.body.name
+    let lastname = req.body.lastname
     let email = req.body.email
     let cpf = req.body.cpf
-    let telefone = req.body.telefone
-    let data = req.body.data
+    let phone = req.body.phone
+    let date = req.body.date
     let status = req.body.status
 
-    let newValue = { _id: id, nome, sobrenome, email, cpf, telefone, data, status}
-
-    collection.save(newValue, function(err, result) {
-        console.log(result)
+    collection.save({ _id: id, name, lastname, email, cpf, phone, date, status}, function(err, result) {
         res.redirect('/')
         });
      });
 
-
+app.get('/delete/:id', function(req, res) {
+    let id = new ObjectId(req.params.id)
+    collection.deleteOne({_id: id},function(err, result) {
+        res.redirect('/')
+        });   
+    });
 });
-
 
 app.listen(3000, () => console.log('App listening on port 3000!'))
