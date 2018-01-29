@@ -1,10 +1,12 @@
 const express = require('express')
-const app = express()
 const path = require('path')
 const exphbs = require('express-handlebars')
 const MongoClient = require('mongodb').MongoClient
 const bodyParser = require('body-parser')
 const ObjectId = require("mongodb").ObjectId
+const app = express()
+
+const port = process.env.PORT || 3000
 
 const MONGO_URL; //URL para conexao no banco
 
@@ -87,7 +89,5 @@ app.get('/delete/:id', function(req, res) {
     });
 });
 
-
-app.set('port', (process.env.PORT || 3000))
-app.listen(app.get('port'), () => console.log(`Node app is running on port ${app.get('port')}`))
+app.listen(port, () => console.log(`Node app is running!!`))
 
