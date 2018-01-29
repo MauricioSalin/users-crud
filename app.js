@@ -87,4 +87,7 @@ app.get('/delete/:id', function(req, res) {
     });
 });
 
-app.listen(3000, () => console.log('App listening on port 3000!'))
+
+app.set('port', (process.env.PORT || 3000))
+app.listen(app.get('port'), () => console.log(`Node app is running on port ${app.get('port')}`))
+
