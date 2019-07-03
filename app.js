@@ -8,7 +8,7 @@ const app = express()
 
 const port = process.env.PORT || 3000
 
-let MONGO_URL; //URL para conexao no banco
+let MONGO_URL = 'mongodb://admin:abc123@ds013456.mlab.com:13456/usercrud'; //URL para conexao no banco
 
 MongoClient.connect(MONGO_URL, function(err, db) {
     db = db.db('usercrud')
@@ -19,8 +19,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const collection = db.collection('Users')
 
-collection.createIndex( { "email": 1 }, { unique: true },function(req, result) { 
-})   
+collection.createIndex( { "email": 1 }, { unique: true },function(req, result) {
+})
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -36,8 +36,8 @@ app.get('/', function(req, res) {
 app.get('/newUser', function(req, res) {
     let newAccount = new Object
     newAccount.user = new Object
-    newAccount.action = "/newUser"    
-        res.render('newUser', newAccount)     
+    newAccount.action = "/newUser"
+        res.render('newUser', newAccount)
 });
 
 app.post('/newUser', function(req, res) {
@@ -48,9 +48,9 @@ app.post('/newUser', function(req, res) {
   let phone = req.body.phone
   let date = req.body.date
   let status = req.body.status
- 
-   collection.insertOne({name, lastname, email, cpf, phone, date, status}, function(err, result) {   
-    if (result === null) {   
+
+   collection.insertOne({name, lastname, email, cpf, phone, date, status}, function(err, result) {
+    if (result === null) {
         res.render('newUser', {user:{name,lastname,cpf,phone,date,status,return: "E-mail ja cadastrado!"}} )
     } else {
         res.redirect('/')}
@@ -63,10 +63,10 @@ app.get('/edit/:id', function(req, res) {
         account.user = JSON.parse(JSON.stringify(result, null, 2))
         account.action = "/edit/:id"
         res.render('newUser', account)
-        });    
+        });
 });
 
-app.post('/edit/:id', function(req, res) {  
+app.post('/edit/:id', function(req, res) {
     let id = new ObjectId(req.params.id)
     let name = req.body.name
     let lastname = req.body.lastname
@@ -85,7 +85,7 @@ app.get('/delete/:id', function(req, res) {
     let id = new ObjectId(req.params.id)
     collection.deleteOne({_id: id},function(err, result) {
         res.redirect('/')
-        });   
+        });
     });
 });
 
